@@ -15,23 +15,40 @@ stages:
   - job: FirstJob
     steps:
     - bash: echo Build first Job
-  - job: SecondJob
-    steps:
-    - bash: echo Build Second Job
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourceDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: java -version
+    - bash: node --version
+    - bash: python --version
+    - bash: mvn -version
 
-- stage: DevDeploy
-  jobs:
-  - job: DevdeployJob
-    steps:
-    - bash: echo Build first  devdeploy Job
+
+
+
+
+
+#   - job: SecondJob
+#     steps:
+#     - bash: echo Build Second Job
+
+# - stage: DevDeploy
+#   jobs:
+#   - job: DevdeployJob
+#     steps:
+#     - bash: echo Build first  devdeploy Job
   
-- stage: QADevDeploy
-  jobs:
-  - job: QADeployJob
-    steps:
-    - bash: echo Build first  QADeploy Job
+# - stage: QADevDeploy
+#   jobs:
+#   - job: QADeployJob
+#     steps:
+#     - bash: echo Build first  QADeploy Job
 
-- stage: ProdDevDeploy
+# - stage: ProdDevDeploy
 
 
 
